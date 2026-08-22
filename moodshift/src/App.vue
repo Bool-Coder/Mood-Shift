@@ -1,5 +1,6 @@
 <script setup>
-import Camera from "./components/Camera.vue";
+import Camera from "./components/Camera.vue"
+import APICallToSpotify from "./components/APICallToSpotify.vue"
 </script>
 
 <template>
@@ -7,5 +8,7 @@ import Camera from "./components/Camera.vue";
     <h1>MoodShift</h1>
 
     <Camera />
+
+    <APICallToSpotify />
   </main>
 </template>
