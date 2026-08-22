@@ -1,5 +1,11 @@
 <script setup>
-//import HelloWorld from "./components/HelloWorld.vue";
+import Camera from "./components/Camera.vue";
 </script>
 
-<template>Hello</template>
+<template>
+  <main>
+    <h1>MoodShift</h1>
+
+    <Camera />
+  </main>
+</template>
