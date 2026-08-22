@@ -46,11 +46,8 @@ function continueToMood() {
     <!-- Header -->
     <header class="header">
       <RouterLink to="/home" class="logo">
-        <span class="logo-face">☺</span>
-
-        <span> Mood<span>Shift</span> </span>
+        <span class="logo-face"><img src="/logo.png" alt="☺" /></span>
       </RouterLink>
-
       <RouterLink to="/home" class="back-button"> ← Home </RouterLink>
     </header>
 
@@ -342,13 +339,14 @@ function continueToMood() {
   align-items: center;
   justify-content: center;
 
-  border: 3px solid white;
-
   border-radius: 50%;
 
   font-size: 30px;
 }
-
+.logo-face img {
+  width: 100px;
+  width: 100px;
+}
 .back-button {
   padding: 11px 20px;
 

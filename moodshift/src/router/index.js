@@ -7,6 +7,7 @@ import Happy from "../views/Happy.vue";
 import Angry from "../views/Angry.vue";
 import Sad from "../views/Sad.vue";
 import Neutral from "../views/Neutral.vue";
+import About from "../views/About.vue";
 
 const routes = [
   {
@@ -36,6 +37,10 @@ const routes = [
   {
     path: "/neutral",
     component: Neutral,
+  },
+  {
+    path: "/about",
+    component: About,
   },
 ];
 const router = createRouter({

@@ -12,9 +12,7 @@ import { RouterLink } from "vue-router";
     <!-- HEADER -->
     <header class="header">
       <RouterLink to="/home" class="logo">
-        <span class="logo-face">☺</span>
-
-        <span> Mood<span>Shift</span> </span>
+        <span class="logo-face"><img src="/logo.png" alt="☺" /></span>
       </RouterLink>
 
       <RouterLink to="/get-expression" class="header-button">
@@ -41,29 +39,45 @@ import { RouterLink } from "vue-router";
       <!-- MOOD BUBBLES -->
       <div class="mood-area">
         <div class="mood-bubble happy">
-          <span>😊</span>
+          <RouterLink to="/happy" class="logo">
+            <span><a href="/home"></a>😊</span>
+          </RouterLink>
         </div>
 
         <div class="mood-bubble sad">
-          <span>😢</span>
+          <RouterLink to="/sad" class="logo">
+            <span>😢</span>
+          </RouterLink>
         </div>
 
         <div class="mood-bubble neutral">
-          <span>😐</span>
+          <RouterLink to="/neutral" class="logo">
+            <span>😐</span>
+          </RouterLink>
         </div>
 
         <div class="mood-bubble angry">
-          <span>😡</span>
+          <RouterLink to="/angry" class="logo">
+            <span>😡</span>
+          </RouterLink>
         </div>
 
         <div class="main-mood">
-          <div class="main-face">😊</div>
+          <RouterLink to="/happy" class="logo">
+            <span>😊</span>
+          </RouterLink>
         </div>
       </div>
 
       <!-- MAIN CTA -->
       <RouterLink to="/get-expression" class="cta">
         <span>Find My Mood</span>
+
+        <span class="cta-arrow"> → </span>
+      </RouterLink>
+      <br />
+      <RouterLink to="/about" class="cta">
+        <span>Why MoodShift Exists?</span>
 
         <span class="cta-arrow"> → </span>
       </RouterLink>
@@ -279,19 +293,20 @@ import { RouterLink } from "vue-router";
 .logo-face {
   width: 44px;
   height: 44px;
-
+  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border: 3px solid white;
 
   border-radius: 50%;
 
   font-size: 30px;
   line-height: 1;
 }
-
+.logo-face img {
+  width: 100px;
+  width: 100px;
+}
 .header-button {
   display: flex;
   align-items: center;
@@ -442,7 +457,9 @@ import { RouterLink } from "vue-router";
 
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 0 60px rgba(255, 255, 255, 0.25);
 }
-
+.main-mood span {
+  font-size: 105px;
+}
 .main-face {
   width: 150px;
   height: 150px;
@@ -481,6 +498,9 @@ import { RouterLink } from "vue-router";
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
 
   animation: float 4s ease-in-out infinite;
+}
+.mood-bubble a {
+  font-size: 45px;
 }
 
 .happy {
