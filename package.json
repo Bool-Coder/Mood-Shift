@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@mediapipe/tasks-vision": "^1.0.1"
+    "@mediapipe/tasks-vision": "^1.0.1",
+    "vue-router": "^5.2.0"
   }
 }
