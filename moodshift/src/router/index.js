@@ -6,6 +6,7 @@ import GetExpression from "../views/GetExpression.vue";
 import Happy from "../views/Happy.vue";
 import Angry from "../views/Angry.vue";
 import Sad from "../views/Sad.vue";
+import Neutral from "../views/Neutral.vue";
 
 const routes = [
   {
@@ -31,6 +32,10 @@ const routes = [
   {
     path: "/sad",
     component: Sad,
+  },
+  {
+    path: "/neutral",
+    component: Neutral,
   },
 ];
 const router = createRouter({
