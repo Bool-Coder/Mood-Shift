@@ -1,72 +1,91 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
-import {
-  initializeFaceLandmarker,
-  detectFace,
-} from "../services/faceLandmaker";
+import { initializeFaceLandmaker, detectFace } from "../services/faceLandmaker";
 
 import { analyzeMood } from "../services/moodAnalyzer";
+
+const emit = defineEmits(["mood-detected"]);
 
 const video = ref(null);
 
 const expression = ref("Loading...");
 const confidence = ref(0);
 
-let cameraStream = null;
+let stream = null;
 let animationFrame = null;
+let lastDetection = 0;
 
 async function startCamera() {
-  cameraStream = await navigator.mediaDevices.getUserMedia({
-    video: {
-      width: {
-        ideal: 1280,
-      },
-      height: {
-        ideal: 720,
-      },
-      facingMode: "user",
-    },
+  console.log("Starting camera...");
+
+  stream = await navigator.mediaDevices.getUserMedia({
+    video: true,
     audio: false,
   });
 
-  video.value.srcObject = cameraStream;
+  console.log("Camera opened.");
+
+  video.value.srcObject = stream;
 
   await video.value.play();
 
   detectLoop();
 }
 
-function detectLoop() {
+async function detectLoop(timestamp) {
   if (!video.value) {
     return;
   }
 
-  if (video.value.readyState < 2) {
-    animationFrame = requestAnimationFrame(detectLoop);
+  animationFrame = requestAnimationFrame(detectLoop);
+
+  /*
+   * Don't run face detection on every frame.
+   * About 10 detections per second is enough.
+   */
+  if (timestamp - lastDetection < 100) {
     return;
   }
 
-  const timestamp = performance.now();
+  lastDetection = timestamp;
 
-  const result = detectFace(video.value, timestamp);
+  if (video.value.readyState < 2) {
+    return;
+  }
 
-  const analysis = analyzeMood(result);
+  try {
+    const result = await detectFace(video.value);
 
-  expression.value = analysis.expression;
-  confidence.value = analysis.confidence;
+    const analysis = analyzeMood(result);
 
-  animationFrame = requestAnimationFrame(detectLoop);
+    expression.value = analysis.expression;
+
+    confidence.value = analysis.confidence;
+
+    emit("mood-detected", analysis);
+  } catch (error) {
+    console.error("Face detection error:", error);
+  }
 }
 
 async function initialize() {
   try {
-    await initializeFaceLandmarker();
+    expression.value = "Loading models...";
+
+    await initializeFaceLandmaker();
+
+    expression.value = "Starting camera...";
+
     await startCamera();
   } catch (error) {
-    console.error("MoodShift camera error:", error);
+    console.error("MOODSHIFT ERROR:", error);
 
     expression.value = "Camera error";
+
+    console.error("Error name:", error.name);
+
+    console.error("Error message:", error.message);
   }
 }
 
@@ -79,18 +98,22 @@ onBeforeUnmount(() => {
     cancelAnimationFrame(animationFrame);
   }
 
-  if (cameraStream) {
-    cameraStream.getTracks().forEach((track) => track.stop());
+  if (stream) {
+    stream.getTracks().forEach((track) => {
+      track.stop();
+    });
   }
 });
 </script>
 
 <template>
-  <div class="camera-container">
+  <div class="camera">
     <video ref="video" autoplay muted playsinline></video>
 
-    <div class="expression">
-      <h2>{{ expression }}</h2>
+    <div class="detected">
+      <h2>
+        {{ expression }}
+      </h2>
 
       <p v-if="confidence > 0">{{ Math.round(confidence * 100) }}%</p>
     </div>
@@ -98,28 +121,33 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.camera-container {
+.camera {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 20px;
 }
 
 video {
   width: 640px;
   max-width: 100%;
+
   border-radius: 16px;
 }
 
-.expression {
+.detected {
   text-align: center;
 }
 
-.expression h2 {
+.detected h2 {
   margin: 0;
+  text-transform: capitalize;
 }
 
-.expression p {
+.detected p {
   margin: 5px 0;
 }
 </style>

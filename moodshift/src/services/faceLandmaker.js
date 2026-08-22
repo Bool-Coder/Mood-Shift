@@ -1,37 +1,42 @@
-import { FaceLandmarker, FilesetResolver } from "@mediapipe/tasks-vision";
+import * as faceapi from "face-api.js";
 
-let faceLandmarker = null;
+let initialized = false;
 
-export async function initializeFaceLandmarker() {
-  const vision = await FilesetResolver.forVisionTasks(
-    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm"
-  );
-
-  faceLandmarker = await FaceLandmarker.createFromOptions(vision, {
-    baseOptions: {
-      modelAssetPath: "/models/face_landmarker.task",
-    },
-
-    runningMode: "VIDEO",
-
-    numFaces: 1,
-
-    outputFaceBlendshapes: true,
-
-    minFaceDetectionConfidence: 0.5,
-    minFacePresenceConfidence: 0.5,
-    minTrackingConfidence: 0.5,
-  });
-
-  console.log("MediaPipe Face Landmarker initialized!");
-
-  return faceLandmarker;
-}
-
-export function detectFace(video, timestamp) {
-  if (!faceLandmarker) {
-    throw new Error("Face Landmarker is not initialized.");
+export async function initializeFaceLandmaker() {
+  if (initialized) {
+    return;
   }
 
-  return faceLandmarker.detectForVideo(video, timestamp);
+  console.log("Loading face-api.js models...");
+
+  await faceapi.nets.tinyFaceDetector.loadFromUri("/models/tiny_face_detector");
+
+  await faceapi.nets.faceLandmark68TinyNet.loadFromUri(
+    "/models/face_landmark_68_tiny"
+  );
+
+  await faceapi.nets.faceExpressionNet.loadFromUri("/models/face_expression");
+
+  initialized = true;
+
+  console.log("All models loaded.");
+}
+
+export async function detectFace(video) {
+  if (!initialized) {
+    throw new Error("Face API is not initialized.");
+  }
+
+  const detection = await faceapi
+    .detectSingleFace(
+      video,
+      new faceapi.TinyFaceDetectorOptions({
+        inputSize: 320,
+        scoreThreshold: 0.5,
+      })
+    )
+    .withFaceLandmarks(true)
+    .withFaceExpressions();
+
+  return detection;
 }
