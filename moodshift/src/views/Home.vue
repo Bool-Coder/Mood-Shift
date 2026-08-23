@@ -166,14 +166,14 @@ import { RouterLink } from "vue-router";
             GitHub ↗
           </a>
 
-          <a href="#"> About </a>
+          <RouterLink to="/about"> About </RouterLink>
         </div>
       </div>
 
       <!-- Bottom -->
       <div class="footer-bottom">
         <span> © 2026 MoodShift </span>
-
+        <span> Made by team "Byte Force" </span>
         <span class="footer-made">
           Made with
           <span class="heart">♥</span>

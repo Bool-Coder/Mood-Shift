@@ -355,6 +355,7 @@ import { RouterLink } from "vue-router";
 
       <div class="footer-bottom">
         <span> © 2026 MoodShift </span>
+        <span> Made by team "Byte Force" </span>
 
         <span>
           Made with

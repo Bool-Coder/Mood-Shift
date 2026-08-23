@@ -208,13 +208,13 @@ function continueToMood() {
             GitHub ↗
           </a>
 
-          <RouterLink to="/home"> About </RouterLink>
+          <RouterLink to="/about"> About </RouterLink>
         </div>
       </div>
 
       <div class="footer-bottom">
         <span> © 2026 MoodShift </span>
-
+        <span> Made by team "Byte Force" </span>
         <span>
           Made with
           <span class="heart">♥</span>

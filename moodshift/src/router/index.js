@@ -8,6 +8,8 @@ import Angry from "../views/Angry.vue";
 import Sad from "../views/Sad.vue";
 import Neutral from "../views/Neutral.vue";
 import About from "../views/About.vue";
+import breathExercise from "../views/breathExercise.vue";
+import ExpressInWords from "../views/ExpressInWords.vue";
 
 const routes = [
   {
@@ -41,6 +43,14 @@ const routes = [
   {
     path: "/about",
     component: About,
+  },
+  {
+    path: "/breath",
+    component: breathExercise,
+  },
+  {
+    path: "/express-in-words",
+    component: ExpressInWords,
   },
 ];
 const router = createRouter({

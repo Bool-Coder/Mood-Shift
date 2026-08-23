@@ -1,9 +1,16 @@
 <script setup>
+import { ref, computed } from "vue";
 import { RouterLink } from "vue-router";
+
+const feeling = ref("");
+
+const wordCount = computed(() => {
+  return feeling.value.trim() ? feeling.value.trim().split(/\s+/).length : 0;
+});
 </script>
 
 <template>
-  <div class="emotion-page">
+  <div class="express-page">
     <!-- BACKGROUND -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
@@ -30,149 +37,131 @@ import { RouterLink } from "vue-router";
       ========================================== -->
 
       <section class="hero">
-        <p class="eyebrow">✦ YOUR CURRENT MOOD</p>
+        <p class="eyebrow">✦ EXPRESS YOURSELF</p>
 
-        <div class="emotion-face">😡</div>
+        <div class="hero-icon">💭</div>
 
         <h1>
-          You seem
-          <span>angry.</span>
+          Put your feelings
+          <span>into words.</span>
         </h1>
 
         <p class="hero-text">
-          It's completely okay to feel angry and frustrated when you feel
-          misunderstood. Your feelings are valid, and you don't have to hide
-          them or fix everything right this second. Just take a deep breath and
-          give yourself a moment to just exist as you are.
+          You don't need the perfect words. You don't need to explain
+          everything. Just write whatever is on your mind.
         </p>
-
-        <div class="hero-arrow">↓</div>
       </section>
+
       <!-- =========================================
-           BREATHING
+           WRITING AREA
       ========================================== -->
 
-      <section class="breathing-section">
-        <div class="breathing-card">
-          <div class="breathing-text">
-            <p class="eyebrow">✦ TAKE A MOMENT</p>
+      <section class="writing-section">
+        <div class="writing-card">
+          <div class="writing-header">
+            <div>
+              <p class="eyebrow">✦ YOUR SPACE</p>
+
+              <h2>What's on your mind?</h2>
+            </div>
+
+            <div class="writing-number">01</div>
+          </div>
+
+          <!-- TEXTAREA -->
+
+          <div class="textarea-wrapper">
+            <textarea
+              v-model="feeling"
+              placeholder="I'm feeling..."
+              maxlength="2000"
+            ></textarea>
+
+            <div class="textarea-bottom">
+              <span> {{ wordCount }} words </span>
+
+              <span> {{ feeling.length }} / 2000 </span>
+            </div>
+          </div>
+
+          <!-- PROMPTS -->
+
+          <div class="prompts">
+            <span class="prompt-label"> Not sure where to start? </span>
+
+            <button @click="feeling = 'Right now, I feel...'">
+              Right now, I feel...
+            </button>
+
+            <button
+              @click="feeling = 'Something that has been on my mind is...'"
+            >
+              Something on my mind...
+            </button>
+
+            <button @click="feeling = 'I wish someone understood that...'">
+              I wish someone understood...
+            </button>
+          </div>
+
+          <!-- SUBMIT -->
+
+          <button
+            class="submit-button"
+            :class="{ active: feeling.trim() }"
+            :disabled="!feeling.trim()"
+          >
+            <span> Save my thoughts </span>
+
+            <span class="submit-arrow"> → </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- =========================================
+           REASSURANCE
+      ========================================== -->
+
+      <section class="reassurance">
+        <div class="reassurance-card">
+          <div class="reassurance-icon">🔒</div>
+
+          <div>
+            <p class="eyebrow">✦ YOUR SPACE</p>
 
             <h2>
-              Breathe.
-              <span>Slowly.</span>
+              You don't have to
+              <span>share it.</span>
             </h2>
 
             <p>
-              Before you do anything else, take a moment for yourself. Slow
-              breathing can help you reconnect with the present and calm you
-              down.
+              This isn't a social media post. There are no likes, no comments
+              and no audience. These words are simply for you.
             </p>
-            <RouterLink to="/breath">
-              <button class="breathing-button">
-                Start breathing
-                <span>→</span>
-              </button>
-            </RouterLink>
-          </div>
-
-          <div class="breathing-visual">
-            <div class="breathing-orbit orbit-1"></div>
-
-            <div class="breathing-orbit orbit-2"></div>
-
-            <div class="breathing-circle">
-              <span>BREATHE</span>
-            </div>
           </div>
         </div>
       </section>
 
       <!-- =========================================
-           MUSIC
+           SMALL MESSAGE
       ========================================== -->
 
-      <section class="music-section">
-        <div class="section-heading">
-          <div class="section-number">01</div>
+      <section class="message-section">
+        <div class="message-card">
+          <div class="message-face">🌱</div>
 
-          <div>
-            <p class="eyebrow">✦ MELOTHERAPY</p>
-
-            <h2>
-              Let the music
-              <span>relax </span> you.
-            </h2>
-
-            <p class="section-description">
-              Sometimes a song can say what we can't. We picked a few playlists
-              that might fit the moment you're in.
-            </p>
-          </div>
-        </div>
-
-        <!-- PLAYLISTS -->
-
-        <div class="playlist-grid">
-          <!-- PLAYLIST 1 -->
-
-          <a
-            href="https://music.youtube.com/playlist?list=PLX193NrqJrFQ"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="playlist-card playlist-main"
-          >
-            <div class="playlist-cover rain">
-              <span>😮‍💨</span>
-            </div>
-
-            <div class="playlist-content">
-              <div class="playlist-top">
-                <span>01</span>
-                <span>PLAYLIST</span>
-              </div>
-
-              <h3>Mad seconds</h3>
-
-              <p>
-                For the moments when you just need to let yourself breath and
-                calm down.
-              </p>
-
-              <div class="listen">
-                Listen on YouTube
-                <span>↗</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <!-- =========================================
-           EXPRESSION
-      ========================================== -->
-
-      <section class="expression-section">
-        <div class="expression-card">
-          <div class="expression-icon">💭</div>
-
-          <p class="eyebrow">✦ EXPRESS YOURSELF</p>
+          <p class="eyebrow">✦ ONE SMALL STEP</p>
 
           <h2>
-            You don't have to
-            <span>keep it inside.</span>
+            Sometimes,
+            <span>writing it down</span>
+            is enough.
           </h2>
 
           <p>
-            You don't have to post it. You don't have to send it. You don't even
-            have to show anyone.
+            You don't have to solve everything today. Start by understanding
+            what you're feeling.
           </p>
-
-          <p>Just put what you're feeling into words.</p>
-
-          <RouterLink to="/express-in-words" class="expression-button">
-            Express yourself
-            <span>→</span>
-          </RouterLink>
         </div>
       </section>
 
@@ -183,14 +172,14 @@ import { RouterLink } from "vue-router";
       <section class="final-cta">
         <div class="final-glow"></div>
 
-        <p class="eyebrow">✦ YOUR MOOD MATTERS</p>
+        <p class="eyebrow">✦ MOODSHIFT</p>
 
         <h2>
-          You don't have to
-          <span>feel alone.</span>
+          Your feelings
+          <span>matter.</span>
         </h2>
 
-        <p>Take a moment. Listen to something. Breathe.</p>
+        <p>Whatever you're feeling, you don't have to ignore it.</p>
 
         <RouterLink to="/get-expression" class="final-button">
           Find My Mood
@@ -280,7 +269,7 @@ import { RouterLink } from "vue-router";
    PAGE
 ========================================= */
 
-.emotion-page {
+.express-page {
   position: relative;
 
   min-height: 100vh;
@@ -291,10 +280,10 @@ import { RouterLink } from "vue-router";
 
   background: linear-gradient(
     135deg,
-    #d40f26 0%,
-    #ac3710 35%,
-    #c14705 70%,
-    #d03206 100%
+    #ff8a78 0%,
+    #e95c9d 30%,
+    #884fd1 65%,
+    #4e74df 100%
   );
 }
 
@@ -315,43 +304,43 @@ import { RouterLink } from "vue-router";
 }
 
 .blob-1 {
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
 
-  top: -220px;
-  left: -180px;
+  top: -200px;
+  left: -150px;
 
-  background: #83a9ff;
+  background: #ffd36b;
 }
 
 .blob-2 {
   width: 500px;
   height: 500px;
 
-  top: 900px;
+  top: 800px;
   right: -250px;
 
-  background: #d27cff;
+  background: #ff8ed0;
 }
 
 .blob-3 {
   width: 450px;
   height: 450px;
 
-  top: 1900px;
+  top: 1600px;
   left: -200px;
 
-  background: #4bbcff;
+  background: #6ccfff;
 }
 
 .blob-4 {
   width: 500px;
   height: 500px;
 
-  bottom: -250px;
+  bottom: -200px;
   right: -200px;
 
-  background: #ff86c8;
+  background: #a77cff;
 }
 
 /* =========================================
@@ -414,7 +403,7 @@ import { RouterLink } from "vue-router";
 
   color: white;
 
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.15);
 
   backdrop-filter: blur(12px);
 
@@ -444,33 +433,9 @@ import { RouterLink } from "vue-router";
 
   margin: 0 auto;
 
-  padding: 80px 25px 130px;
+  padding: 90px 25px 100px;
 
   text-align: center;
-}
-
-.emotion-face {
-  width: 120px;
-  height: 120px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  margin: 35px auto;
-
-  border-radius: 40px;
-
-  background: rgba(255, 255, 255, 0.15);
-
-  border: 1px solid rgba(255, 255, 255, 0.3);
-
-  backdrop-filter: blur(20px);
-
-  font-size: 65px;
-
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
 }
 
 .eyebrow {
@@ -485,10 +450,34 @@ import { RouterLink } from "vue-router";
   opacity: 0.75;
 }
 
+.hero-icon {
+  width: 105px;
+  height: 105px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 30px auto;
+
+  border-radius: 35px;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  background: rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(20px);
+
+  font-size: 55px;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
 .hero h1 {
   margin: 0;
 
-  font-size: clamp(55px, 8vw, 105px);
+  font-size: clamp(55px, 8vw, 100px);
 
   line-height: 0.95;
 
@@ -500,7 +489,7 @@ import { RouterLink } from "vue-router";
 .hero h1 span {
   display: block;
 
-  color: #bde5ff;
+  color: #ffeaa5;
 }
 
 .hero-text {
@@ -515,412 +504,362 @@ import { RouterLink } from "vue-router";
   opacity: 0.9;
 }
 
-.hero-arrow {
-  margin-top: 55px;
-
-  font-size: 35px;
-
-  animation: arrowFloat 2s ease-in-out infinite;
-}
-
-@keyframes arrowFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(10px);
-  }
-}
-
 /* =========================================
-   MUSIC
+   WRITING SECTION
 ========================================= */
 
-.music-section {
+.writing-section {
   position: relative;
 
   z-index: 2;
 
-  max-width: 1100px;
+  max-width: 1050px;
 
-  margin: auto;
+  margin: 0 auto;
 
-  padding: 0 25px 150px;
+  padding: 0 25px 130px;
 }
 
-.section-heading {
+.writing-card {
+  padding: 45px;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  border-radius: 40px;
+
+  background: rgba(255, 255, 255, 0.14);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+}
+
+/* WRITING HEADER */
+
+.writing-header {
   display: flex;
 
-  gap: 30px;
+  justify-content: space-between;
 
-  margin-bottom: 55px;
+  align-items: flex-start;
+
+  margin-bottom: 30px;
 }
 
-.section-number {
+.writing-header h2 {
+  margin: 0;
+
+  font-size: clamp(35px, 5vw, 55px);
+
+  line-height: 1;
+
+  letter-spacing: -3px;
+}
+
+.writing-number {
   font-size: 13px;
 
   font-weight: 800;
 
   letter-spacing: 3px;
 
-  opacity: 0.55;
-
-  padding-top: 5px;
-}
-
-.section-heading h2 {
-  margin: 0;
-
-  font-size: clamp(45px, 6vw, 70px);
-
-  line-height: 1;
-
-  letter-spacing: -4px;
-}
-
-.section-heading h2 span {
-  color: #bde5ff;
-}
-
-.section-description {
-  max-width: 600px;
-
-  margin-top: 25px;
-
-  font-size: 17px;
-
-  line-height: 1.7;
-
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 /* =========================================
-   PLAYLIST GRID
+   TEXTAREA
 ========================================= */
 
-.playlist-grid {
-  display: grid;
+.textarea-wrapper {
+  position: relative;
 
-  grid-template-columns: repeat(1, 1fr);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 
-  gap: 20px;
+  border-radius: 28px;
+
+  background: rgba(0, 0, 0, 0.08);
+
+  transition: 0.25s;
 }
 
-.playlist-card {
-  overflow: hidden;
+.textarea-wrapper:focus-within {
+  border-color: rgba(255, 255, 255, 0.65);
+
+  background: rgba(0, 0, 0, 0.12);
+
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06);
+}
+
+textarea {
+  width: 100%;
+
+  min-height: 360px;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+
+  resize: vertical;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
 
   color: white;
 
-  text-decoration: none;
+  font-family: inherit;
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 20px;
 
-  border-radius: 30px;
-
-  background: rgba(255, 255, 255, 0.12);
-
-  backdrop-filter: blur(15px);
-
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-
-  transition: transform 0.3s, background 0.3s;
+  line-height: 1.7;
 }
 
-.playlist-card:hover {
-  transform: translateY(-8px);
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
 
+.textarea-bottom {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 0 25px 20px;
+
+  font-size: 12px;
+
+  opacity: 0.5;
+}
+
+/* =========================================
+   PROMPTS
+========================================= */
+
+.prompts {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.prompt-label {
+  margin-right: 5px;
+
+  font-size: 13px;
+
+  opacity: 0.6;
+}
+
+.prompts button {
+  padding: 9px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 999px;
+
+  color: white;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.prompts button:hover {
   background: rgba(255, 255, 255, 0.18);
+
+  transform: translateY(-2px);
 }
 
-.playlist-cover {
-  height: 230px;
+/* =========================================
+   SUBMIT
+========================================= */
+
+.submit-button {
+  width: 100%;
+
+  margin-top: 30px;
+
+  padding: 10px 10px 10px 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border: none;
+
+  border-radius: 999px;
+
+  color: #9b4b91;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  font-family: inherit;
+
+  font-size: 16px;
+
+  font-weight: 800;
+
+  cursor: not-allowed;
+
+  transition: 0.25s;
+}
+
+.submit-button.active {
+  color: #9b4b91;
+
+  background: white;
+
+  cursor: pointer;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.submit-button.active:hover {
+  transform: translateY(-3px);
+}
+
+.submit-arrow {
+  width: 48px;
+  height: 48px;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  font-size: 65px;
+  border-radius: 50%;
+
+  color: white;
+
+  background: linear-gradient(135deg, #ff6c9d, #7747d8);
+
+  font-size: 22px;
 }
 
-.rain {
-  background: radial-gradient(circle at 30% 20%, #e2f1f8, #9cc4d8 55%, #6b9ac4);
+/* =========================================
+   REASSURANCE
+========================================= */
+
+.reassurance {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 950px;
+
+  margin: 0 auto;
+
+  padding: 0 25px 130px;
 }
 
-.night {
-  background: radial-gradient(circle at 70% 20%, #8b8de0, #3e3975 50%, #242347);
-}
-
-.sunrise {
-  background: radial-gradient(circle at 50% 20%, #f3a8a1, #75558c 55%, #34325e);
-}
-
-.playlist-content {
-  padding: 28px;
-}
-
-.playlist-top {
+.reassurance-card {
   display: flex;
 
-  justify-content: space-between;
+  align-items: center;
 
-  font-size: 10px;
+  gap: 30px;
 
-  font-weight: 800;
+  padding: 35px;
 
-  letter-spacing: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 
-  opacity: 0.55;
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.11);
+
+  backdrop-filter: blur(15px);
 }
 
-.playlist-content h3 {
-  margin: 18px 0 10px;
+.reassurance-icon {
+  width: 75px;
+  height: 75px;
 
-  font-size: 27px;
+  flex-shrink: 0;
 
-  letter-spacing: -1px;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 25px;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  font-size: 32px;
 }
 
-.playlist-content p {
+.reassurance h2 {
   margin: 0;
 
-  font-size: 14px;
+  font-size: 35px;
+
+  letter-spacing: -2px;
+}
+
+.reassurance h2 span {
+  color: #ffeaa5;
+}
+
+.reassurance p:last-child {
+  max-width: 650px;
+
+  margin-bottom: 0;
 
   line-height: 1.6;
 
   opacity: 0.75;
 }
 
-.listen {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  margin-top: 25px;
-
-  padding: 10px 16px;
-
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.16);
-
-  font-size: 13px;
-
-  font-weight: 700;
-}
-
-.listen span {
-  font-size: 18px;
-}
-
 /* =========================================
-   BREATHING
+   MESSAGE
 ========================================= */
 
-.breathing-section {
+.message-section {
   position: relative;
 
   z-index: 2;
 
-  padding: 50px 25px 150px;
-}
+  max-width: 900px;
 
-.breathing-card {
-  max-width: 1100px;
+  margin: 0 auto;
 
-  margin: auto;
-
-  padding: 65px;
-
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  align-items: center;
-
-  gap: 50px;
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
-
-  border-radius: 40px;
-
-  background: rgba(255, 255, 255, 0.12);
-
-  backdrop-filter: blur(20px);
-}
-
-.breathing-text h2 {
-  margin: 0;
-
-  font-size: clamp(50px, 6vw, 75px);
-
-  line-height: 0.95;
-
-  letter-spacing: -4px;
-}
-
-.breathing-text h2 span {
-  color: #bde5ff;
-}
-
-.breathing-text > p:not(.eyebrow) {
-  max-width: 520px;
-
-  margin-top: 25px;
-
-  line-height: 1.7;
-
-  opacity: 0.8;
-}
-
-.breathing-button {
-  margin-top: 25px;
-
-  padding: 13px 20px;
-
-  display: inline-flex;
-
-  gap: 15px;
-
-  align-items: center;
-
-  border: none;
-
-  border-radius: 999px;
-
-  color: #5a4b9e;
-
-  background: white;
-
-  font-size: 15px;
-
-  font-weight: 800;
-
-  cursor: pointer;
-
-  transition: 0.25s;
-}
-
-.breathing-button:hover {
-  transform: translateY(-3px);
-
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-/* BREATHING VISUAL */
-
-.breathing-visual {
-  height: 400px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  position: relative;
-}
-
-.breathing-circle {
-  width: 180px;
-  height: 180px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  border: 2px solid rgba(255, 255, 255, 0.5);
-
-  background: rgba(150, 180, 255, 0.15);
-
-  box-shadow: 0 0 80px rgba(150, 190, 255, 0.25);
-
-  animation: breathe 5s ease-in-out infinite;
-}
-
-.breathing-circle span {
-  font-size: 11px;
-
-  font-weight: 800;
-
-  letter-spacing: 3px;
-}
-
-.breathing-orbit {
-  position: absolute;
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
-
-  border-radius: 50%;
-}
-
-.orbit-1 {
-  width: 270px;
-  height: 270px;
-}
-
-.orbit-2 {
-  width: 370px;
-  height: 370px;
-
-  opacity: 0.5;
-}
-
-@keyframes breathe {
-  0%,
-  100% {
-    transform: scale(0.8);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-/* =========================================
-   EXPRESSION
-========================================= */
-
-.expression-section {
-  position: relative;
-
-  z-index: 2;
-
-  max-width: 1000px;
-
-  margin: auto;
-
-  padding: 0 25px 150px;
-}
-
-.expression-card {
-  padding: 80px 50px;
+  padding: 0 25px 130px;
 
   text-align: center;
+}
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
+.message-card {
+  padding: 70px 40px;
 
   border-radius: 40px;
 
-  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(15px);
 }
 
-.expression-icon {
-  font-size: 50px;
-
+.message-face {
   margin-bottom: 20px;
+
+  font-size: 50px;
 }
 
-.expression-card h2 {
-  max-width: 750px;
+.message-card h2 {
+  max-width: 700px;
 
   margin: 0 auto 25px;
 
@@ -931,64 +870,20 @@ import { RouterLink } from "vue-router";
   letter-spacing: -4px;
 }
 
-.expression-card h2 span {
-  color: #bde5ff;
+.message-card h2 span {
+  color: #ffeaa5;
 }
 
-.expression-card p:not(.eyebrow) {
+.message-card p:last-child {
   max-width: 600px;
 
-  margin: 10px auto;
+  margin: auto;
+
+  font-size: 17px;
 
   line-height: 1.7;
 
   opacity: 0.8;
-}
-
-.expression-button {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 15px;
-
-  margin-top: 25px;
-
-  padding: 9px 10px 9px 25px;
-
-  border-radius: 999px;
-
-  color: #5c4a9d;
-
-  background: white;
-
-  text-decoration: none;
-
-  font-weight: 800;
-
-  transition: 0.25s;
-}
-
-.expression-button span {
-  width: 45px;
-  height: 45px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  color: white;
-
-  background: linear-gradient(135deg, #709cff, #c36bdb);
-
-  font-size: 20px;
-}
-
-.expression-button:hover {
-  transform: translateY(-3px);
 }
 
 /* =========================================
@@ -1010,11 +905,11 @@ import { RouterLink } from "vue-router";
 
   overflow: hidden;
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 
   border-radius: 45px;
 
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.13);
 
   backdrop-filter: blur(20px);
 }
@@ -1022,8 +917,8 @@ import { RouterLink } from "vue-router";
 .final-glow {
   position: absolute;
 
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
 
   left: 50%;
   top: 50%;
@@ -1032,7 +927,7 @@ import { RouterLink } from "vue-router";
 
   border-radius: 50%;
 
-  background: #91aaff;
+  background: #ff88c8;
 
   filter: blur(100px);
 
@@ -1048,7 +943,7 @@ import { RouterLink } from "vue-router";
 .final-cta h2 {
   margin: 0;
 
-  font-size: clamp(50px, 7vw, 85px);
+  font-size: clamp(55px, 8vw, 90px);
 
   line-height: 1;
 
@@ -1056,7 +951,7 @@ import { RouterLink } from "vue-router";
 }
 
 .final-cta h2 span {
-  color: #bde5ff;
+  color: #ffeaa5;
 }
 
 .final-cta > p:not(.eyebrow) {
@@ -1078,7 +973,7 @@ import { RouterLink } from "vue-router";
 
   border-radius: 999px;
 
-  color: #5b4c9c;
+  color: #974d92;
 
   background: white;
 
@@ -1104,13 +999,13 @@ import { RouterLink } from "vue-router";
 
   color: white;
 
-  background: linear-gradient(135deg, #709cff, #c36bdb);
+  background: linear-gradient(135deg, #ff6c9d, #7747d8);
 
   font-size: 22px;
 }
 
 .final-button:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.02);
 }
 
 /* =========================================
@@ -1134,7 +1029,7 @@ import { RouterLink } from "vue-router";
 .footer-content {
   max-width: 1100px;
 
-  margin: auto;
+  margin: 0 auto;
 
   display: grid;
 
@@ -1242,7 +1137,7 @@ import { RouterLink } from "vue-router";
 }
 
 .heart {
-  color: #bde5ff;
+  color: #ffeaa5;
 }
 
 /* =========================================
@@ -1254,18 +1149,13 @@ import { RouterLink } from "vue-router";
     padding: 20px;
   }
 
-  .playlist-grid {
-    grid-template-columns: 1fr;
+  .writing-card {
+    padding: 35px;
   }
 
-  .breathing-card {
-    grid-template-columns: 1fr;
-
-    padding: 45px;
-  }
-
-  .breathing-visual {
-    height: 350px;
+  .reassurance {
+    padding-left: 25px;
+    padding-right: 25px;
   }
 
   .footer {
@@ -1274,6 +1164,14 @@ import { RouterLink } from "vue-router";
 
   .footer-content {
     grid-template-columns: repeat(2, 1fr);
+
+    gap: 35px 20px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+
+    max-width: none;
   }
 }
 
@@ -1298,11 +1196,11 @@ import { RouterLink } from "vue-router";
   }
 
   .hero {
-    padding: 70px 20px 100px;
+    padding: 70px 20px 80px;
   }
 
   .hero h1 {
-    font-size: 55px;
+    font-size: 53px;
 
     letter-spacing: -3px;
   }
@@ -1311,49 +1209,68 @@ import { RouterLink } from "vue-router";
     font-size: 16px;
   }
 
-  .emotion-face {
-    width: 100px;
-    height: 100px;
-
-    font-size: 55px;
-  }
-
-  .music-section {
-    padding: 0 20px 100px;
-  }
-
-  .section-heading {
-    flex-direction: column;
-
-    gap: 10px;
-  }
-
-  .section-heading h2 {
-    font-size: 48px;
-  }
-
-  .breathing-section {
-    padding: 20px 15px 100px;
-  }
-
-  .breathing-card {
-    padding: 35px 25px;
-
-    border-radius: 30px;
-  }
-
-  .breathing-visual {
-    transform: scale(0.8);
-  }
-
-  .expression-section {
+  .writing-section {
     padding: 0 15px 100px;
   }
 
-  .expression-card {
+  .writing-card {
+    padding: 25px;
+
+    border-radius: 30px;
+  }
+
+  .writing-header h2 {
+    font-size: 36px;
+  }
+
+  textarea {
+    min-height: 300px;
+
+    padding: 22px;
+
+    font-size: 17px;
+  }
+
+  .prompts {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .prompt-label {
+    margin-bottom: 5px;
+  }
+
+  .reassurance {
+    padding: 0 15px 100px;
+  }
+
+  .reassurance-card {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 25px;
+
+    border-radius: 25px;
+  }
+
+  .reassurance h2 {
+    font-size: 30px;
+  }
+
+  .message-section {
+    padding: 0 15px 100px;
+  }
+
+  .message-card {
     padding: 60px 25px;
 
     border-radius: 30px;
+  }
+
+  .message-card h2 {
+    font-size: 45px;
   }
 
   .final-cta {
@@ -1374,14 +1291,6 @@ import { RouterLink } from "vue-router";
 
   .footer-content {
     grid-template-columns: 1fr 1fr;
-
-    gap: 35px 20px;
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-
-    max-width: none;
   }
 
   .footer-bottom {
