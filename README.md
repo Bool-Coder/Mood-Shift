@@ -10,10 +10,16 @@
 
 <p align="center">
 
-![Vue](https://img.shields.io/badge/Vue.js-3-42b883?style=for-the-badge&logo=vue.js&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-Fast-646cff?style=for-the-badge&logo=vite&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)
-![face-api.js](https://img.shields.io/badge/Computer%20Vision-face--api.js-ff6b6b?style=for-the-badge)
+[![Vue](https://img.shields.io/badge/Vue.js-3-42b883?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org/)
+[![Vite](https://img.shields.io/badge/Vite-Fast-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![face-api.js](https://img.shields.io/badge/Computer%20Vision-face--api.js-ff6b6b?style=for-the-badge)](https://github.com/justadudewhohacks/face-api.js)
+
+</p>
+
+<p align="center">
+
+## 🚀 <a href="https://cristian2017.go.ro/home">Try MoodShift Live</a>
 
 </p>
 
@@ -414,6 +420,45 @@ The prototype focuses on recognizing the emotional signal and creating the found
 
 ---
 
+# 🎮 Try MoodShift
+
+Experience the live MoodShift prototype:
+
+## 🚀 [Launch MoodShift](https://cristian2017.go.ro/home)
+
+The intended experience is:
+
+```text
+        🏠 HOME
+          │
+          ▼
+   FIND MY MOOD
+          │
+          ▼
+       📷 CAMERA
+          │
+          ▼
+  👁️ FACIAL ANALYSIS
+          │
+          ▼
+   🧠 MOOD DETECTION
+          │
+          ▼
+    🎵 MOOD RESPONSE
+```
+
+### Quick Start
+
+1. Open the live application.
+2. Allow camera access.
+3. Click **Find My Mood**.
+4. Look at the camera.
+5. Let MoodShift analyze your facial expression.
+6. Discover your detected mood.
+7. Experience the corresponding mood-based interaction.
+
+---
+
 # 🛠️ Technology Stack
 
 | Technology | Purpose |
@@ -537,7 +582,7 @@ Mood-Shift/
 
 # 🚀 Installation
 
-Follow these steps to run MoodShift locally.
+Want to run MoodShift locally?
 
 ## Requirements
 
@@ -782,6 +827,10 @@ It helps us share the idea and continue exploring how emotional signals can shap
 ### 🔗 GitHub
 
 https://github.com/Bool-Coder/Mood-Shift
+
+### 🚀 Live Demo
+
+https://cristian2017.go.ro/home
 
 ---
 
