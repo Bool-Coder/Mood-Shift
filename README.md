@@ -1,25 +1,32 @@
 # 🎧 MoodShift
 
 <p align="center">
-  <strong>Signals that Shape Our World — turning emotional signals into music.</strong>
+
+<strong>Signals that Shape Our World — turning emotional signals into music.</strong>
+
 </p>
 
 <p align="center">
-  <em>See the signal. Understand the mood. Find the rhythm. Make the shift.</em>
+
+<em>See the signal. Understand the mood. Find the rhythm. Make the shift.</em>
+
 </p>
 
 <p align="center">
 
 [![Vue](https://img.shields.io/badge/Vue.js-3-42b883?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org/)
+
 [![Vite](https://img.shields.io/badge/Vite-Fast-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
 [![face-api.js](https://img.shields.io/badge/Computer%20Vision-face--api.js-ff6b6b?style=for-the-badge)](https://github.com/justadudewhohacks/face-api.js)
 
 </p>
 
 <p align="center">
 
-## 🚀 <a href="https://cristian2017.go.ro/home">Try MoodShift Live</a>
+**## 🚀 <a href="https://cristian2017.go.ro/home">Try MoodShift Live</a>**
 
 </p>
 
@@ -29,7 +36,7 @@
 
 **MoodShift** is an emotional-computing project built around one simple question:
 
-> ### **What if technology could recognize how someone feels before asking them to explain it?**
+> **What if technology could recognize how someone feels before asking them to explain it?**
 
 MoodShift uses a webcam and facial-expression analysis to detect a user's emotional signal and create a more personal digital experience around that signal.
 
@@ -49,7 +56,7 @@ Messages, social media, video calls, notifications, and online communities allow
 
 Yet being digitally connected does not always mean feeling emotionally connected.
 
-For many young people, especially **Gen Z**, expressing difficult emotions can be uncomfortable or difficult.
+For many young people, expressing difficult emotions can be uncomfortable or difficult.
 
 Sometimes:
 
@@ -75,7 +82,7 @@ But traditional music platforms usually begin with:
 
 MoodShift explores a different approach:
 
-> ### **"What if we could recognize the emotional signal first?"**
+> **"What if we could recognize the emotional signal first?"**
 
 A person should not always have to find the words before technology can respond.
 
@@ -83,29 +90,41 @@ A person should not always have to find the words before technology can respond.
 
 # 🌍 Signals that Shape Our World
 
-MoodShift was created around the hackathon theme:
-
-## **Signals that Shape Our World**
-
-The project connects different kinds of signals:
+MoodShift connects different kinds of signals:
 
 ```text
         👤 HUMAN
+
            │
+
            │ Facial Signal
+
            ▼
+
     👁️ COMPUTER VISION
+
            │
+
            │ Emotional Signal
+
            ▼
+
         🧠 MOOD
+
            │
+
            │ Music Signal
+
            ▼
+
        🎵 MUSIC
+
            │
+
            │ Emotional Transition
+
            ▼
+
       😌 CALM / 🎯 FOCUS
 ```
 
@@ -137,9 +156,13 @@ The application accesses the camera directly through the browser and processes t
 
 ```text
 Webcam
+
    ↓
+
 Live Video Stream
+
    ↓
+
 Facial Analysis
 ```
 
@@ -165,12 +188,12 @@ MoodShift processes the expression probabilities produced by the facial-expressi
 
 The main moods used by the experience are:
 
-| Mood | Emotional Signal |
-|---|---|
+| Mood           | Emotional Signal                 |
+| -------------- | -------------------------------- |
 | 😐 **Neutral** | Low or balanced emotional signal |
-| 😢 **Sad** | Sad or low-valence signal |
-| 😊 **Happy** | Positive emotional signal |
-| 😡 **Angry** | High-intensity negative signal |
+| 😢 **Sad**     | Sad or low-valence signal        |
+| 😊 **Happy**   | Positive emotional signal        |
+| 😡 **Angry**   | High-intensity negative signal   |
 
 The underlying expression model can also provide additional expression probabilities such as fear, disgust, and surprise.
 
@@ -186,13 +209,21 @@ Conceptually:
 
 ```text
 Facial Expression
+
        ↓
+
 ~10 detections / second
+
        ↓
+
 Emotion Smoothing
+
        ↓
+
 Repeated Detection
+
        ↓
+
 Stable Mood
 ```
 
@@ -226,17 +257,29 @@ Instead of immediately trying to make someone happy, MoodShift explores a gradua
 
 ```text
 CURRENT EMOTIONAL STATE
+
           │
+
           ▼
+
    🎵 MATCH THE MOOD
+
           │
+
           ▼
+
       🫂 VALIDATE
+
           │
+
           ▼
+
    🔄 SHIFT GRADUALLY
+
           │
+
           ▼
+
      😌 CALM / 🎯 FOCUS
 ```
 
@@ -244,17 +287,29 @@ CURRENT EMOTIONAL STATE
 
 ```text
 😢 SAD
+
   │
+
   ▼
+
 🎵 Music that resonates with the current mood
+
   │
+
   ▼
+
 🫂 Emotional validation
+
   │
+
   ▼
+
 🔄 Gradual musical transition
+
   │
+
   ▼
+
 😌 CALMER STATE
 ```
 
@@ -278,7 +333,7 @@ MoodShift uses the detected emotional state as the starting point for a musical 
 
 The core idea is:
 
-> ### **Match first. Modulate second.**
+> **Match first. Modulate second.**
 
 MoodShift first recognizes the user's emotional signal.
 
@@ -286,21 +341,37 @@ Then music can be used to gradually influence the direction of the experience.
 
 ```text
         👤 USER
+
            │
+
            ▼
+
       🧠 EMOTIONAL
+
          SIGNAL
+
            │
+
            ▼
+
       🎵 MELO THERAPY
+
            │
+
            ▼
+
       🧬 ISO PRINCIPLE
+
            │
+
            ▼
+
    MATCH → MODULATE → TRANSITION
+
            │
+
            ▼
+
       😌 CALM / 🎯 FOCUS
 ```
 
@@ -312,15 +383,25 @@ For example:
 
 ```text
 😢 SAD
+
   ↓
+
 🎵 Match the emotional state
+
   ↓
+
 🎵 Gradually adjust BPM and energy
+
   ↓
+
 🎵 Shift musical valence
+
   ↓
+
 😌 CALM
+
   ↓
+
 🎯 FOCUS
 ```
 
@@ -353,20 +434,35 @@ It is:
 
 ```text
 😢 Sad
+
   │
+
   ▼
+
 🎵 Resonance
+
   │
+
   ▼
+
 🫂 Validation
+
   │
+
   ▼
+
 🔄 Gradual Transition
+
   │
+
   ▼
+
 😌 Calm
+
   │
+
   ▼
+
 🎯 Focus
 ```
 
@@ -386,15 +482,19 @@ Facial expressions are **signals — not absolute truths**.
 
 Instead, MoodShift explores a smaller and more human question:
 
-> ### **Can technology recognize an emotional signal and respond in a way that feels more personal?**
+> **Can technology recognize an emotional signal and respond in a way that feels more personal?**
 
 For someone who doesn't feel like explaining what they're going through, the first interaction could simply be:
 
 ```text
 LOOK
+
   ↓
+
 RECOGNIZE
+
   ↓
+
 RESPOND
 ```
 
@@ -430,20 +530,35 @@ The intended experience is:
 
 ```text
         🏠 HOME
+
           │
+
           ▼
+
    FIND MY MOOD
+
           │
+
           ▼
+
        📷 CAMERA
+
           │
+
           ▼
+
   👁️ FACIAL ANALYSIS
+
           │
+
           ▼
+
    🧠 MOOD DETECTION
+
           │
+
           ▼
+
     🎵 MOOD RESPONSE
 ```
 
@@ -461,18 +576,18 @@ The intended experience is:
 
 # 🛠️ Technology Stack
 
-| Technology | Purpose |
-|---|---|
-| 🟢 **Vue 3** | Frontend interface |
-| ⚡ **Vite** | Development and build tooling |
-| 🧭 **Vue Router** | Application navigation |
-| 🟨 **JavaScript** | Application logic |
-| 👁️ **face-api.js** | Facial detection and expression recognition |
-| 🔍 **Tiny Face Detector** | Face detection |
-| 📍 **68-point Facial Landmarks** | Facial landmark detection |
-| 🧠 **Face Expression Model** | Expression classification |
-| 📷 **MediaDevices API** | Browser webcam access |
-| 🎵 **Spotify / YouTube** | Music ecosystem |
+| Technology                       | Purpose                                     |
+| -------------------------------- | ------------------------------------------- |
+| 🟢 **Vue 3**                     | Frontend interface                          |
+| ⚡ **Vite**                      | Development and build tooling               |
+| 🧭 **Vue Router**                | Application navigation                      |
+| 🟨 **JavaScript**                | Application logic                           |
+| 👁️ **face-api.js**               | Facial detection and expression recognition |
+| 🔍 **Tiny Face Detector**        | Face detection                              |
+| 📍 **68-point Facial Landmarks** | Facial landmark detection                   |
+| 🧠 **Face Expression Model**     | Expression classification                   |
+| 📷 **MediaDevices API**          | Browser webcam access                       |
+| 🎵 **Spotify / YouTube**         | Music ecosystem                             |
 
 ---
 
@@ -493,7 +608,7 @@ The intended experience is:
 │                                          │
 │  👁️ Face Detection                       │
 │  📍 Facial Landmarks                     │
-│  🧠 Facial Expressions                  │
+│  🧠 Facial Expressions                   │
 └───────────────────┬──────────────────────┘
                     │
                     ▼
@@ -533,48 +648,91 @@ The intended experience is:
 
 ```text
 Mood-Shift/
+
 │
+
 ├── moodshift/
+
 │   │
+
 │   ├── public/
+
 │   │   └── models/
+
 │   │       ├── face_expression/
+
 │   │       ├── face_landmark_68_tiny/
+
 │   │       └── tiny_face_detector/
+
 │   │
+
 │   ├── src/
+
 │   │   │
+
 │   │   ├── assets/
+
 │   │   │
+
 │   │   ├── components/
+
 │   │   │   ├── Camera.vue
+
 │   │   │   ├── MoodDisplay.vue
+
 │   │   │   ├── Results.vue
+
 │   │   │   └── recommendationEngine.vue
+
 │   │   │
+
 │   │   ├── router/
+
 │   │   │   └── index.js
+
 │   │   │
+
 │   │   ├── services/
+
 │   │   │   ├── faceLandmaker.js
+
 │   │   │   ├── moodAnalyzer.js
+
 │   │   │   └── recommendationEngine.js
+
 │   │   │
+
 │   │   ├── views/
+
 │   │   │   ├── Angry.vue
+
 │   │   │   ├── Happy.vue
+
 │   │   │   ├── Home.vue
+
 │   │   │   ├── Sad.vue
+
 │   │   │   └── getExpression.vue
+
 │   │   │
+
 │   │   ├── App.vue
+
 │   │   └── main.js
+
 │   │
+
 │   ├── package.json
+
 │   └── vite.config.js
+
 │
+
 ├── LICENSE
+
 ├── README.md
+
 └── package.json
 ```
 
@@ -597,6 +755,7 @@ Check your installation:
 
 ```bash
 node --version
+
 npm --version
 ```
 
@@ -663,25 +822,45 @@ The current experience follows a simple flow:
 
 ```text
               🏠 HOME
+
                 │
+
                 ▼
+
          "FIND MY MOOD"
+
                 │
+
                 ▼
+
              📷 CAMERA
+
                 │
+
                 ▼
+
         👁️ FACIAL ANALYSIS
+
                 │
+
                 ▼
+
          🧠 MOOD DETECTION
+
                 │
+
         ┌───────┼───────┐
+
         ▼       ▼       ▼
+
       😢 SAD  😊 HAPPY  😡 ANGRY
+
         │       │       │
+
         └───────┼───────┘
+
                 ▼
+
          🎵 MOOD EXPERIENCE
 ```
 
@@ -710,7 +889,7 @@ We believe emotional technology should be designed with privacy and responsibili
 
 ### ⚠️ Important Disclaimer
 
-MoodShift is a **hackathon and experimental project**.
+MoodShift is an **experimental project**.
 
 It is **not a medical device, diagnostic system, or replacement for professional mental-health support**.
 
@@ -734,7 +913,7 @@ It knows what we:
 
 MoodShift asks a different question:
 
-> ### **What about the signals we don't put into words?**
+> **What about the signals we don't put into words?**
 
 A face is a signal.
 
@@ -746,17 +925,29 @@ Music is a signal.
 
 ```text
 👤 FACE
+
   │
+
   ▼
+
 👁️ SIGNAL
+
   │
+
   ▼
+
 🧠 EMOTION
+
   │
+
   ▼
+
 🎵 MUSIC
+
   │
+
   ▼
+
 🌱 EXPERIENCE
 ```
 
@@ -766,55 +957,7 @@ The vision is a world where technology doesn't only ask:
 
 but can also begin with:
 
-> ### **"How are you?"**
-
----
-
-# 🏆 Built for the Hackathon
-
-## **Signals that Shape Our World**
-
-MoodShift explores how one of the most human signals — **facial expression** — can become the input for a more empathetic digital experience.
-
-Instead of adding another form to fill out, another question to answer, or another button to press, MoodShift starts with something people naturally communicate every day:
-
-# **Their expression.**
-
----
-
-# ❤️ Why We Built MoodShift
-
-We built MoodShift around a simple belief:
-
-> ### **People shouldn't always have to find the words before technology can try to understand them.**
-
-For someone feeling isolated, overwhelmed, sad, or angry, even a small moment of recognition can matter.
-
-MoodShift uses technology to explore that moment.
-
-<p align="center">
-  <strong>See the signal.</strong><br>
-  <strong>Understand the mood.</strong><br>
-  <strong>Find the rhythm.</strong><br>
-  <strong>Make the shift.</strong>
-</p>
-
----
-
-# 👥 Team
-
-## ⚡ Byte Force
-
-Built for the **Signals that Shape Our World** hackathon.
-
-### Team Members
-
-| Member |
-|---|
-| **Barladianu Mario** |
-| **Nicolau Paul** |
-| **Ion Arian** |
-| **Timofei Filip** |
+> **"How are you?"**
 
 ---
 
@@ -822,7 +965,7 @@ Built for the **Signals that Shape Our World** hackathon.
 
 If you like the project, consider giving the repository a ⭐ star.
 
-It helps us share the idea and continue exploring how emotional signals can shape better human-computer interactions.
+It helps share the idea and continue exploring how emotional signals can shape better human-computer interactions.
 
 ### 🔗 GitHub
 
@@ -836,6 +979,6 @@ https://cristian2017.go.ro/home
 
 # 📄 License
 
-MoodShift is released under the **MIT License**.
+MoodShift is released under the CC BY-NC-ND 4.0.
 
 See the [`LICENSE`](LICENSE) file for details.
