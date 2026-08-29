@@ -308,7 +308,7 @@ import { RouterLink } from "vue-router";
       <div class="footer-content">
         <div class="footer-brand">
           <RouterLink to="/home" class="footer-logo">
-            <span class="footer-face"> ☺ </span>
+            <span class="footer-face">☺</span>
 
             <span> Mood<span>Shift</span> </span>
           </RouterLink>
@@ -323,7 +323,7 @@ import { RouterLink } from "vue-router";
 
           <RouterLink to="/get-expression"> Find your mood </RouterLink>
 
-          <RouterLink to="/about"> About </RouterLink>
+          <RouterLink to="/dashboard"> Dashboard </RouterLink>
         </div>
 
         <div class="footer-section">
@@ -349,13 +349,14 @@ import { RouterLink } from "vue-router";
             GitHub ↗
           </a>
 
-          <RouterLink to="/get-expression"> Try MoodShift </RouterLink>
+          <RouterLink to="/about"> About </RouterLink>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span> © 2026 MoodShift </span>
-        <span> Made by team "Byte Force" </span>
+        <span>© 2026 MoodShift</span>
+
+        <span>Made by team "Byte Force"</span>
 
         <span>
           Made with

@@ -8,6 +8,8 @@ const router = express.Router();
 const requireAuth = require("../middleware/auth");
 
 router.get("/me", requireAuth, async (req, res) => {
+  console.log("ME USER:", req.user);
+  console.log("ME MOODS:", req.user.moods);
   res.json({
     user: {
       id: req.user._id,

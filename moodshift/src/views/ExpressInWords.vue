@@ -194,19 +194,15 @@ const wordCount = computed(() => {
 
     <footer class="footer">
       <div class="footer-content">
-        <!-- BRAND -->
-
         <div class="footer-brand">
           <RouterLink to="/home" class="footer-logo">
-            <span class="footer-face"> ☺ </span>
+            <span class="footer-face">☺</span>
 
             <span> Mood<span>Shift</span> </span>
           </RouterLink>
 
           <p>Your mood. Your moment. Your shift.</p>
         </div>
-
-        <!-- EXPLORE -->
 
         <div class="footer-section">
           <h4>Explore</h4>
@@ -215,10 +211,8 @@ const wordCount = computed(() => {
 
           <RouterLink to="/get-expression"> Find your mood </RouterLink>
 
-          <RouterLink to="/about"> About </RouterLink>
+          <RouterLink to="/dashboard"> Dashboard </RouterLink>
         </div>
-
-        <!-- MOODS -->
 
         <div class="footer-section">
           <h4>Moods</h4>
@@ -232,8 +226,6 @@ const wordCount = computed(() => {
           <RouterLink to="/neutral"> 😐 Neutral </RouterLink>
         </div>
 
-        <!-- PROJECT -->
-
         <div class="footer-section">
           <h4>Project</h4>
 
@@ -245,18 +237,18 @@ const wordCount = computed(() => {
             GitHub ↗
           </a>
 
-          <RouterLink to="/get-expression"> Try MoodShift </RouterLink>
+          <RouterLink to="/about"> About </RouterLink>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span> © 2026 MoodShift </span>
+        <span>© 2026 MoodShift</span>
 
-        <span> Made by team "Byte Force" </span>
+        <span>Made by team "Byte Force"</span>
 
         <span>
           Made with
-          <span class="heart"> ♥ </span>
+          <span class="heart">♥</span>
           for better days
         </span>
       </div>

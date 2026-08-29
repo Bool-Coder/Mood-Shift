@@ -183,7 +183,7 @@ async function continueToMood() {
       <div class="footer-content">
         <div class="footer-brand">
           <RouterLink to="/home" class="footer-logo">
-            <span class="footer-face"> ☺ </span>
+            <span class="footer-face">☺</span>
 
             <span> Mood<span>Shift</span> </span>
           </RouterLink>
@@ -197,6 +197,8 @@ async function continueToMood() {
           <RouterLink to="/home"> Home </RouterLink>
 
           <RouterLink to="/get-expression"> Find your mood </RouterLink>
+
+          <RouterLink to="/dashboard"> Dashboard </RouterLink>
         </div>
 
         <div class="footer-section">
@@ -227,8 +229,10 @@ async function continueToMood() {
       </div>
 
       <div class="footer-bottom">
-        <span> © 2026 MoodShift </span>
-        <span> Made by team "Byte Force" </span>
+        <span>© 2026 MoodShift</span>
+
+        <span>Made by team "Byte Force"</span>
+
         <span>
           Made with
           <span class="heart">♥</span>

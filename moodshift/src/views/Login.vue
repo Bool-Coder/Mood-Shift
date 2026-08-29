@@ -120,10 +120,9 @@ async function login() {
     <!-- FOOTER -->
     <footer class="footer">
       <div class="footer-content">
-        <!-- Brand -->
         <div class="footer-brand">
           <RouterLink to="/home" class="footer-logo">
-            <span class="footer-face"> ☺ </span>
+            <span class="footer-face">☺</span>
 
             <span> Mood<span>Shift</span> </span>
           </RouterLink>
@@ -131,16 +130,16 @@ async function login() {
           <p>Your mood. Your moment. Your shift.</p>
         </div>
 
-        <!-- Navigation -->
         <div class="footer-section">
           <h4>Explore</h4>
 
           <RouterLink to="/home"> Home </RouterLink>
 
           <RouterLink to="/get-expression"> Find your mood </RouterLink>
+
+          <RouterLink to="/dashboard"> Dashboard </RouterLink>
         </div>
 
-        <!-- Moods -->
         <div class="footer-section">
           <h4>Moods</h4>
 
@@ -153,9 +152,8 @@ async function login() {
           <RouterLink to="/neutral"> 😐 Neutral </RouterLink>
         </div>
 
-        <!-- Project -->
         <div class="footer-section">
-          <h4>MoodShift</h4>
+          <h4>Project</h4>
 
           <a
             href="https://github.com/Bool-Coder/Mood-Shift"
@@ -170,9 +168,11 @@ async function login() {
       </div>
 
       <div class="footer-bottom">
-        <span> © 2026 MoodShift </span>
+        <span>© 2026 MoodShift</span>
 
-        <span class="footer-made">
+        <span>Made by team "Byte Force"</span>
+
+        <span>
           Made with
           <span class="heart">♥</span>
           for better days
