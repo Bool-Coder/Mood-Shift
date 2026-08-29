@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink, useRouter } from "vue-router";
-
+import api from "../services/api";
+import { getCurrentUser } from "../services/auth";
 import Camera from "../components/Camera.vue";
 import MoodDisplay from "../components/MoodDisplay.vue";
 
@@ -27,11 +28,24 @@ function updateMood(analysis) {
   confidence.value = analysis.confidence;
 }
 
-function continueToMood() {
+async function continueToMood() {
   if (currentMood.value === "Waiting..." || currentMood.value === "No face") {
     return;
   }
-
+  const user = await getCurrentUser();
+  if (!user) return;
+  try {
+    await api.post("/moods/add-mood", {
+      mood: currentMood.value.toLowerCase(),
+      confidence: confidence.value,
+    });
+  } catch (err) {
+    console.error("ADD MOOD ERROR:", err);
+    console.error("STATUS:", err.response?.status);
+    console.error("DATA:", err.response?.data);
+    alert(err.response?.data?.message || "Something went wrong.");
+    return;
+  }
   router.push(`/${currentMood.value}`);
 }
 </script>

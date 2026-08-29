@@ -15,6 +15,10 @@ import { RouterLink } from "vue-router";
         <span class="logo-face"><img src="/logo.png" alt="☺" /></span>
       </RouterLink>
 
+      <RouterLink to="/login" class="header-button"
+        >Login in your account</RouterLink
+      >
+
       <RouterLink to="/get-expression" class="header-button">
         Let's begin
         <span>✦</span>
